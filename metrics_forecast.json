@@ -1,0 +1,9 @@
+{
+  "mae": 612.3829956054688,
+  "smape": 40.90602993965149,
+  "hist_minutes": 720,
+  "horizon_minutes": 1440,
+  "train_windows": 4000,
+  "val_windows": 1000,
+  "test_windows": 1000
+}

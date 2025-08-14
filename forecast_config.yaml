@@ -1,0 +1,18 @@
+model: smartmeterx_forecaster (LSTM seq2seq)
+history_minutes: 720
+horizon_minutes: 1440
+stride_minutes: 60
+optimizer: Adam(1e-3)
+loss: MAE
+epochs: 5
+batch_size: 16
+early_stopping:
+  monitor: val_loss
+  mode: min
+  patience: 2
+features:
+- mains
+- h_sin
+- h_cos
+- d_sin
+- d_cos
