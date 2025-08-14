@@ -1,0 +1,62 @@
+project: "SmartMeterX \u2014 NILM Disaggregation (AMPds auto-loader)"
+paths:
+  data_dir: C:\Users\sagni\Downloads\SmartMeterX\archive (2)
+  output_dir: C:\Users\sagni\Downloads\SmartMeterX
+selection:
+  mains_column: Water_Billing__Total Fees
+  appliance_columns:
+  - Electricity_WHE__St
+  - Electricity_WHE__Pt
+  - Electricity_RSE__St
+  - Electricity_RSE__Pt
+  - Electricity_HPE__St
+preprocessing:
+  resample: 1T
+  calendar_features:
+  - h_sin
+  - h_cos
+  - d_sin
+  - d_cos
+  fill: ffill->bfill->0
+  scalers:
+    X: StandardScaler
+    Y: StandardScaler
+windows:
+  length: 256
+  stride: 16
+model:
+  type: 1D-CNN seq2seq
+  layers:
+  - Conv1D:
+      filters: 64
+      kernel_size: 5
+      activation: relu
+      padding: same
+  - Conv1D:
+      filters: 64
+      kernel_size: 5
+      activation: relu
+      padding: same
+  - BatchNorm: {}
+  - Conv1D:
+      filters: 96
+      kernel_size: 5
+      activation: relu
+      padding: same
+  - Dropout: 0.2
+  - Conv1D:
+      filters: 5
+      kernel_size: 1
+      activation: linear
+      padding: same
+  optimizer: adam
+  learning_rate: 0.001
+  loss: mae
+  metrics:
+  - mae
+  epochs: 40
+  batch_size: 64
+  early_stopping:
+    monitor: val_mae
+    mode: min
+    patience: 5

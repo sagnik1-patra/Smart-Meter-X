@@ -1,0 +1,29 @@
+{
+  "window": 256,
+  "stride": 16,
+  "num_appliances": 5,
+  "appliances": [
+    "Electricity_WHE__St",
+    "Electricity_WHE__Pt",
+    "Electricity_RSE__St",
+    "Electricity_RSE__Pt",
+    "Electricity_HPE__St"
+  ],
+  "mains_column": "Water_Billing__Total Fees",
+  "mae_per_appliance": {
+    "Electricity_WHE__St": 12624489.0,
+    "Electricity_WHE__Pt": 11624191.0,
+    "Electricity_RSE__St": 2910104.75,
+    "Electricity_RSE__Pt": 2640465.75,
+    "Electricity_HPE__St": 1830846.875
+  },
+  "smape_per_appliance": {
+    "Electricity_WHE__St": 85.37245392799377,
+    "Electricity_WHE__Pt": 84.8936378955841,
+    "Electricity_RSE__St": 85.87152361869812,
+    "Electricity_RSE__Pt": 87.44774460792542,
+    "Electricity_HPE__St": 71.66581749916077
+  },
+  "mae_mean": 6326019.475,
+  "smape_mean": 83.05023550987244
+}
